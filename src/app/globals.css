@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Soft, plain off-white background (no gradient). */
+body {
+  @apply min-h-screen bg-[#f6f7fb] text-slate-800 antialiased;
+}
+
+@layer components {
+  /* Soft frosted card: near-white, gentle edge, wide and faint drop shadow */
+  .card {
+    @apply rounded-2xl border border-slate-100 bg-white/80 p-5 backdrop-blur-xl;
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.03),
+      0 12px 32px -12px rgba(15, 23, 42, 0.10);
+  }
+
+  .input  { @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100; }
+  .label  { @apply mb-1 block text-sm font-medium text-slate-600; }
+  .btn    { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition disabled:opacity-50; }
+  .btn-primary   { @apply btn bg-indigo-500 text-white shadow-md shadow-indigo-500/20 hover:bg-indigo-600; }
+  .btn-secondary { @apply btn border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-800; }
+
+  .table-head { @apply border-b border-slate-100 bg-slate-50/60; }
+  .table-th { @apply px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-slate-400; }
+  .table-td { @apply px-4 py-3 text-sm text-slate-700; }
+}
+
+/* Light row dividers inside cards */
+.card tbody > tr + tr { border-top: 1px solid rgb(241 245 249); }
+
+.leaflet-container { border-radius: 0.75rem; }

@@ -1,0 +1,23 @@
+# Render Blueprint for the anomaly-detection API (ml-service/).
+services:
+  - type: web
+    name: incident-ml-service
+    runtime: python
+    plan: free
+    rootDir: ml-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ML_API_KEY
+        sync: false
+      - key: CONTAMINATION
+        value: "0.05"
+      - key: MIN_INCIDENTS
+        value: "20"
